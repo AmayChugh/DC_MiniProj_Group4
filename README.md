@@ -2,7 +2,7 @@
 Communication between Server and Client using RPC.
 ## About The Project
 
-This project is a Python application that provide communication between the Server and client using RPC
+This project is a Python application that provide communication between the Server and client using wsjsonrpc which is a python library for JSON RPC 2.0
 
 
 

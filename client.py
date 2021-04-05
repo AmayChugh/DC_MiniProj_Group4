@@ -6,9 +6,9 @@ from twisted.internet import task
 
 from wsjsonrpc import factory
 
-logobserver = logger.textFileLogObserver(sys.stdout)
-logger.globalLogPublisher.addObserver(logobserver)
-log = logger.Logger()
+logobserver = logger.textFileLogObserver(sys.stdout) #(Type: Function)Create a FileLogObserver(Type: Class Log observer that writes to a file-like object) that emits text to a specified (writable) file-like object
+logger.globalLogPublisher.addObserver(logobserver) #The LogPublisher that all Logger instances that are not otherwise parameterized will point to by default. (type: LogPublisher)
+log = logger.Logger() #A Logger emits log messages to an observer. You should instantiate it as a class or module attribute
 
 @defer.inlineCallbacks
 def main(reactor):
@@ -26,7 +26,7 @@ def main(reactor):
 
     result = yield df
 
-    log.debug("sum result: {}".format(result))
+    log.debug("result: {}".format(result))
     yield result
 
 task.react(main)

@@ -14,18 +14,19 @@ log = logger.Logger()
 def main(reactor):
 
     protocol = yield factory.get_client(hostname="localhost", port=8095, path=u"wsjsonrpc")
-
+    a = int(input())
+    b = int(input())
     df = None
     with protocol.batchContext() as batch:
-        batch.request("math.sub", [5, 2])
-        batch.request("math.sub", [2, 3])
-        batch.request("math.sub", [3, 4])
-        batch.request("math.sub", [4, 5])
+        batch.request("math.sum", [a, b])
+        batch.request("math.sub", [a, b])
+        batch.request("math.mult", [a, b])
+        batch.request("math.division", [a, b])
         df = batch.deferredList(consumeErrors=1)
 
     result = yield df
 
-    log.debug("difference result: {}".format(result))
+    log.debug("result: {}".format(result))
     yield result
 
 task.react(main)
